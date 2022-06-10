@@ -1,2 +1,8 @@
-# wordle-game
-FAC week3: take home challenge: recreate popular wordle game: create different user stories, pick one and build it
+FAC workshops
+
+1. Markup
+- semantic 
+- a11y
+
+
+2. Markup
