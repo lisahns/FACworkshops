@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real world fetch</title>
+  </head>
+  <body>
+<form>
+  <label for="petName">Pet Name</label>
+  <input type="text" id="petName"/>
+
+  <label for="petAge">Pet Age</label>
+  <input type="text" id="petAge"/>
+
+  <button type="submit">Submit</button>
+
+</form>
+
+    <script>
+
+// fetch("https://echo.oliverjam.workers.dev/status/404")
+// .then((response) => {
+// if (!response.ok) {
+//   //new Error?
+//   const error = new Error(response.status);
+//       throw error;
+//       //throws error inside a promise
+// }})
+// .catch((error) => console.log(error));
+
+
+//Challenge submitting data
+
+// const pets = {
+//   name: "Potato",
+//   colour: "ginger",
+//   age: 1
+// }
+
+
+// fetch("https://echo.oliverjam.workers.dev/json", {
+//   method: "POST",
+//   headers: {
+//     "content-type": "application/json"
+//   },
+//   body: JSON.stringify(pets)
+// })
+
+// .then((response) => response.json())
+// .then((pet) => console.log(pet))
+// .catch((error) => console.log(error))
+
+
+
+//Challenge query selector
+
+//Challenge new FormData() -- isnt logging response?
+
+const petForm = document.querySelector("form");
+
+petForm.addEventListener("submit", event => {
+  event.preventDefault();
+  const petData = new FormData(petForm);
+  const data = Object.fromEntries(petData);
+
+
+fetch("https://echo.oliverjam.workers.dev/json", {
+  method: "POST",
+  headers: { "content-type": "application/json" },
+  body: JSON.stringify(data)
+})
+
+.then((response) => {
+  if (!response.ok) throw new Error(response.status);
+  return response.json();
+})
+
+.then((json) => console.log(json))
+.catch((error) => console.log(error))
+
+});
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real world fetch</title>
+  </head>
+  <body>
+<form>
+  <label for="pokemon">Search Pokemon</label>
+  <input type="search" name="pokemon" id="pokemon"/>
+
+  <button type="submit">Submit</button>
+
+  <output></output>
+
+</form>
+
+    <script>
+
+const form = document.querySelector("form");
+const output = document.querySelector("output");
+
+form.addEventListener("submit", event => {
+  event.preventDefault();
+  const searchData = new FormData(form);
+  const pokemon = searchData.get("pokemon");
+
+fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`, {
+  // method: "POST",
+  // body: JSON.stringify(pokemon),
+  // headers: { "content-type": "application/json" },
+  
+  
+})
+.then((response) => {
+  if (!response.ok) {
+    const error = new Error(response.status)
+  throw error
+};
+  return response.json();
+})
+
+
+.then((pokemonData) => {
+            const heading = document.createElement("h2");
+            heading.textContent = pokemonData.name;
+
+            const image = document.createElement("img");
+            image.src = pokemonData.sprites.front_default;
+            image.alt = "";
+
+            output.append(heading, image);
+          })
+
+
+.catch((error) => console.log(error), alert("please type a pokemon name"))
+
+});
+
+    </script>
+  </body>
+</html>

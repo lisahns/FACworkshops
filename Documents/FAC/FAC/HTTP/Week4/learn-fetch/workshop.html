@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn Fetch & Promises</title>
+  </head>
+  <body>
+    <h1>Open the console</h1>
+    <script>
+//       //Challenge 1
+//       const request = fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
+// console.log(request);
+
+// //Challenge 2
+//   fetch("https://pokeapi.co/api/v2/pokemon/pikachu").then((result) =>
+//   console.log(result));
+
+//   //Challenge 3
+//   fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
+//   .then((result) => result.json()
+//   .then((data) => console.log(data)));
+  
+// //Challenge 4
+// fetch()
+//   .then((result) => result.json()
+//   .then((data) => console.log(data))
+//   .catch((error) => console.log(error)));
+
+
+//Workshop
+//Task 1
+
+getUser = (usrn) => {
+   return fetch(`https://api.github.com/users/${usrn}`)
+  .then((response) => response.json())
+}
+
+getUser("lisahns")
+  .then((user) => console.log(user))
+  .catch((error) => console.log(error));
+
+
+
+  //Task 2
+
+getRepos = (user) => {
+  return fetch(`https://api.github.com/users/${user}/repos`)
+  .then((response) => response.json());
+}
+
+getRepos("lisahns")
+.then((repo) => console.log(repo))
+.catch((error) => console.log(error));
+
+
+
+
+
+//Task 3
+
+Promise.all([
+  getUser("lisahns"),
+  getUser("Ranger8de")
+]).then((user) => console.log(user))
+.catch((error) => console.log(error));
+
+    </script>
+  </body>
+</html>
