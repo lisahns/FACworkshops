@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn Testing</title>
+  </head>
+  <body>
+    <h1>Open the console</h1>
+
+    <script>
+      // the function we're testing
+      function square(x) {
+        return x * x;
+      }
+
+      //first challenge
+      // const result = square(2);
+      // const expected = 999; //deliberate wrong answer so we can see a test failure
+      // if (result !== expected) {
+      //   console.error("failed: expected square(2) to equal 4, but got " + result);
+      // }
+
+      //second challenge
+      const equal = (result, expected, message) => {
+        if (result == expected) {
+           const defaultMsg = "Expected " + expected + " and found " + result;
+           console.info("Success: " + (message || defaultMsg))
+        } else {
+          const defaultMsg = "Expected " + expected + " but found " + result;
+          console.error("Failed: " + (message || defaultMsg))
+        }
+      } 
+
+      const result1 = square(2);
+      const expected1 = 4;
+      equal(result1, expected1);
+
+      const result2 = square(3.5);
+      const expected2 = 999; //deliberate wrong answer to cause test to fail
+      equal(result2, expected2);
+
+      //third challenge
+      const notEqual = (result, expected, message) => {
+        if (result == expected) {
+          const defaultMsg = expected + " is the same as " + result;
+          console.error("Failed: " + (message || defaultMsg));
+        } else {
+          const defaultMsg = expected + " is different to " + result;
+          console.info("Success: " + (message || defaultMsg));
+      }}
+
+      const result3 = square(3);
+      const expected3 = 10;
+      notEqual(result3, expected3);
+
+      //fourth challenge
+      function test(name, testFunction) {
+        console.group(name);
+        testFunction();
+        console.groupEnd();
+      }
+      test("Correctly squares integers", () => {
+        const result = square(2);
+        const expected = 4;
+        equal(result, expected, "square(2) should return 4");
+      });
+      test("Correctly squares decimals", () => {
+        const result = square(3.5);
+        const expected = 12.25;
+        equal(result, expected, "square(3.5) should return 12.25");
+      });
+    </script>
+  </body>
+</html>
