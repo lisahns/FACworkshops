@@ -12,9 +12,10 @@ searchParamsToObject = (str) => {
 
 //Challenge 3
 isLeapYear = (year) => {
-  if (year % 4 == 0) return true;
-  if (year % 100 == 0) return false;
-  if (year % 400 == 0) return true;
   if (year < 0) return "Please enter a positive number";
-  if (year == "") return "Please enter a number";
+  else if (typeof year !== "number") return "Please enter a number";
+  else if (year % 4 !== 0) return false;
+  else if (year % 100 == 0 && year % 400 !== 0) return false;
+  // else if (year % 400 == 0) return true;
+  else {return true};
 }
