@@ -24,10 +24,16 @@ test("test divide" , () => {
 }); 
 
 test("test for strings" , () => {
-    const expected = 4
-    const result = calculate("2", "+", "2")
+    const expected = 0
+    const result = calculate("2", "-", "2")
     equal(expected, result)
 }); 
+
+test("test for empty" , () => {
+const expected = NaN;
+    const result = calculate("", "+", 2)
+    equal(expected, result)
+})
 //concatenates numbers
 
 //Challenge 2
