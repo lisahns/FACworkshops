@@ -1,0 +1,19 @@
+{
+  "name": "dev-tooling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "add.js",
+  "scripts": {
+    "dev": "browser-sync --server --watch",
+    "prettier": "prettier --write .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.27.10",
+    "eslint": "^8.20.0",
+    "prettier": "^2.7.1"
+  }
+}
